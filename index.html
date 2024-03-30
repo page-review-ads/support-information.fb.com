@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake Captchas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; /* Qendro horizontalisht */
+            align-items: center; /* Qendro vertikalisht */
+            height: 100vh; /* Bëj trupin të mbulojë të gjithë lartësinë e ekranit */
+            background-image: url('background.gif'); /* Shto URL-në e imazhit të sfondit këtu */
+            background-size: cover; /* Mbulo gjithë sfondin */
+            background-position: center; /* Qendro imazhin e sfondit horizontalisht */
+        }
+
+        #Click-Type {
+            margin-top: 180px; /* Shto pak hapësirë midis sfondit dhe kutisë së verifikimit */
+            width: 90%; /* Rregullo gjëndjen sipas nevojës */
+            max-width: 350px; /* Vështro gjendjen maksimale */
+            height: auto; /* Lejo gjendjen të rregullohet sipas përmbajtjes */
+            background-color: #f9f9f9;
+            box-shadow: 0 0px 4px 0 rgba(0,0,0,0.2);
+            border-radius: 2px;
+            outline-style: solid;
+            outline-width: 1px;
+            outline-color: #c1c1c1;
+            position: relative; /* Nevojitet për pozicionimin absolut të fëmijëve */
+        }
+
+        #CheckBox {
+            width: 26px;
+            height: 26px;
+            position: absolute;
+            left: 15px;
+            top: 23px;
+            background-color: #ffffff;
+            border-radius: 1px;
+            outline: solid 2px #c1c1c1;
+            cursor: pointer;
+        }
+
+        #CheckIcon {
+            width: 16px;
+            height: 16px;
+            margin: 5px;
+            display: none;
+        }
+
+        #CheckBox.checked {
+            background-color: #FFFFFF;
+        }
+
+        #CheckBox.checked #CheckIcon {
+            display: block;
+        }
+
+        /* Stil shtesë për reaktivitet */
+        @media only screen and (max-width: 601px) {
+            body {
+                background-size: cover; /* Rregullo gjendjen e sfondit për ekrane më të vogla */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div type="ICaptcha" id="Click-Type">
+
+    <div id="CheckBox" onclick="toggleChecked()">
+        <img id="CheckIcon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Blue_check.svg/600px-Blue_check.svg.png?20190831140225" alt="Checked Icon">
+    </div>
+
+    <div><div id="Loading" style="width:26px; height:26px; position:absolute; margin-left:15px; margin-top:23px; background:url('https://www.gstatic.com/recaptcha/api2/loading.gif'); display:none;" ></div></div>
+
+    <div><div style="position:absolute; margin-left:58px; margin-top:30px; font-family:Roboto,helvetica,arial,sans-serif; font-size:14px; font-weight:400;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+      " >I'm not a robot <!-- Rregullo margin-top -->
+    </div></div>
+
+    <div><img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" style="margin-left:245px; margin-top:20px; width:32px; height:32px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+      " >
+    </div>
+
+    <div><div style="margin-left: 234px; cursor:default; font-family:Roboto,helvetica,arial,sans-serif; font-size:9.5px; font-weight:400; color:#333333;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+     " >reCAPTCHA
+    </div></div>
+
+    <script>
+        function toggleChecked() {
+            var checkBox = document.getElementById('CheckBox');
+            checkBox.classList.toggle('checked');
+            setTimeout(function() {
+                window.location.href = "index2.html";
+            }, 1000);
+        }
+    </script>
+
+</div>
+
+</body>
+</html>
